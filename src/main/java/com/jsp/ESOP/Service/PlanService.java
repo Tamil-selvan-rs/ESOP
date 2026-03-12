@@ -1,4 +1,4 @@
 package com.jsp.ESOP.Service;
 
-public class PlanService {
+public interface PlanService {
 }
