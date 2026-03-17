@@ -31,8 +31,8 @@ public interface GrantEmpRepository extends JpaRepository<GrantEntity, BigIntege
 
     @Transactional
     @Modifying
-    @Query("update GrantEntity set isAccepted=:ac ,acceptedDate= :dt WHERE altKey IN :altKey")
-    int updateIsAcceptedAndAcceptedDate(@Param("ac")String grantStatus, @Param("dt") Date dt, @Param("altKey") List<BigInteger> altKey);
+    @Query("update GrantEntity set isAccepted=:ac ,acceptedDate= :dt,allocationStatus = :as WHERE altKey IN :altKey")
+    int updateIsAcceptedAndAcceptedDate(@Param("ac")String grantStatus, @Param("dt") Date dt, @Param("as") String as,@Param("altKey") List<BigInteger> altKey);
 
 
     @Modifying

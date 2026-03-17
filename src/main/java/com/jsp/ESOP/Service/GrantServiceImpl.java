@@ -95,7 +95,7 @@ public class GrantServiceImpl implements GrantService {
     @Override
     public AppResponseDto processAcceptGrants(List<BigInteger> list) {
         try {
-            int updatedRow = grantEmpRepository.updateIsAcceptedAndAcceptedDate("YES", new Date(), list);
+            int updatedRow = grantEmpRepository.updateIsAcceptedAndAcceptedDate("YES", new Date(),"APPROVED",list);
             if(updatedRow == list.size())
                 return new AppResponseDto("200", "Null", "Success", grantEmpRepository.findAllById(list));
 

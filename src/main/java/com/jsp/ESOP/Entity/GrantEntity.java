@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "emp_table_master")
+@Table(name = "grant_master")
 public class GrantEntity {
     @Id
     @Column(name = "alt_Key")
@@ -43,7 +43,6 @@ public class GrantEntity {
     private Date modifiedDate;
 
     public GrantEntity(GrantDto grantDto) {
-
         this.altKey=generateRandomNumber();
     this.grantNumber=grantDto.getGrantNumber();
     this.grantPrice=grantDto.getGrantPrice();
