@@ -4,10 +4,9 @@ import com.jsp.ESOP.DTO.AppResponseDto;
 import com.jsp.ESOP.DTO.PlanDto;
 import com.jsp.ESOP.Service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigInteger;
 
 @RestController
 public class PlanController {
@@ -21,5 +20,9 @@ public class PlanController {
     @GetMapping("/currentPlanId")
     public AppResponseDto getCurrentPlanId() {
     return planService.processGetCurrentplan();
+    }
+    @PutMapping("/updateMonetizationDate/{planId}")
+    public AppResponseDto updateMonetizationDate(@PathVariable("planId")BigInteger planId) {
+        return planService.processUpdateMoetizationDate(planId);
     }
 }

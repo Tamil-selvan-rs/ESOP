@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,4 +23,8 @@ public interface PlanRepository extends JpaRepository<PlanEntity, BigInteger> {
 
     @Query(value = "select altKey from PlanEntity Where isCurrentPlan = true")
     BigInteger findCurrentPlan();
+@Modifying
+@Transactional
+@Query(value = "update PlanEntity set monitaizationDate = :md where altKey= :pid")
+    int updateMonetizationDate(@Param("md")Date monetizationDate,@Param("pid") BigInteger planId);
 }

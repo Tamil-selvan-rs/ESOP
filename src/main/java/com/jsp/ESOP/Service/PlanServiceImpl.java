@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -34,6 +36,15 @@ public class PlanServiceImpl implements PlanService {
     public AppResponseDto processGetCurrentplan() {
         try {
             return new AppResponseDto("200", null, "success", planRepository.findCurrentPlan());
+        }catch (Exception e){
+            return new AppResponseDto("400", e.getMessage(), "Failed", null);
+        }
+    }
+
+    @Override
+    public AppResponseDto processUpdateMoetizationDate(BigInteger planId) {
+        try {
+            return new AppResponseDto("200",null,"SUCCESS",planRepository.updateMonetizationDate(new Date(), planId));
         }catch (Exception e){
             return new AppResponseDto("400", e.getMessage(), "Failed", null);
         }
